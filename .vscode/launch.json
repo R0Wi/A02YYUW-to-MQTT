@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--serial-port", "${input:serialPort}",
+                "--mqtt-host", "${input:mqttHost}",
+                "--mqtt-value-topic", "${input:mqttValueTopic}",
+                "--log-file", "stdout",
+                "--log-level", "DEBUG",
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "serialPort",
+            "type": "promptString",
+            "description": "Serial port",
+            "default": "/dev/ttyUSB0"
+        },
+        {
+            "id": "mqttHost",
+            "type": "promptString",
+            "description": "MQTT host",
+            "default": "localhost"
+        },
+        {
+            "id": "mqttValueTopic",
+            "type": "promptString",
+            "description": "MQTT value topic",
+            "default": "sensors/a02yyuw/distance"
+        }
+    ]
+}
