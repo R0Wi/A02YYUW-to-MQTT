@@ -3,3 +3,8 @@
 __pycache__/
 img/
 doc/
+.git/
+.github/
+.venv/
+.gitignore
+test/

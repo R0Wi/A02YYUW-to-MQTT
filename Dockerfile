@@ -1,7 +1,16 @@
-FROM python:3.12
+FROM python:3.12-trixie
 
-ADD . /opt/app
-WORKDIR /opt/app
+ARG USER=serviceuser
+
+ENV USER=$USER
+ENV HOME=/home/$USER
+
+RUN useradd --create-home --shell /bin/bash $USER && \
+    chown -R $USER:$USER $HOME && \
+    usermod -aG dialout $USER
+USER $USER
+WORKDIR $HOME/app
+ADD --chown=$USER:$USER . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
